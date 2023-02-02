@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <div style="margin-bottom: 3rem;">
+        <h4 align="left">Current cash: <span class="badge bg-secondary" style="font-size: ; background-color: !important">{{ "$%.2f"|format(current) }}</span></h4>
+        <h4 align="left">Grand total: <span class="badge bg-secondary" style="display: inline-block; background-color: !important">{{ "$%.2f"|format(grand) }}</span></h4>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in stock %}
+                <tr>
+                    <td>{{ row["symbol"] }}</td>
+                    <td>{{ row["SUM(amount)"] }}</td>
+                    <td>{{ row["price"] | usd }}</td>
+                    <td>{{ (row["price"] * row["SUM(amount)"]) | usd }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

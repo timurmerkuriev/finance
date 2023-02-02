@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <form action="/quoted" method="post">
+            <input autocomplete="off" style="display:inline" autofocus class="form-control mx-auto w-auto" name="symbol" placeholder="Quote" type="text">
+            <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+{% endblock %}
